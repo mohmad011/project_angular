@@ -1,0 +1,52 @@
+export default {
+    GENERAL: {
+        BACK: 'الرجوع',
+        SAVE: 'حفظ',
+        SAVE_CONTINUE: 'حفظ و استمرار',
+        BACK_TICKETS_LIST: 'الرجوع إلى قائمة التذكرة',
+        BACK_TO_HOME: 'الرجوع إلى الصفحة الرئيسية'
+    },
+    VALIDATION: {
+        SUBMIT_ERROR: 'لقد حدث خطأ! برجاء تغيير بعض الحقول ثم حاول الحفظ مرة أخرى.',
+        EVENT_ID: 'رقم الحدث',
+        VALID_REQUIRED: 'مطلوب',
+        USER_ID_IS: 'الثمن',
+    },
+    INPUT: {
+        ENTER_EVENT_ID: 'أدخل رقم الحدث',
+        ENTER_PRICE: 'أدخل الثمن',
+        ENTER_USER_ID: 'أدخل رقم المستخدم',
+        ENTER_PROMO_CODE: 'أدخل كوبون الخصم',
+        ENTER_STATUS: 'أدخل الحالة',
+        ENTER_TYPE:'ادخل النوع',
+    },
+    LIST: {
+        TICKET: 'التذكرة',
+        TICKETS: 'التذكرة',
+        USER_EMAIL: 'بريد المستخدم',
+        NAME: 'اسم المستخدم',
+        EVENT_ID: 'رقم الحدث',
+        STATUS: 'الحالة',
+        ACTIONS: 'التحكم',
+        TICKET_SAVED: 'تم حفظ التذكرة بنجاح.',
+        NEW_TICKET_SAVED: 'تم إضافة تذكرة جديدة بنجاح.',
+        TICKETS_LIST: 'قائمة التذكرة',
+        CREATE_TICKET: 'إنشاء تذكرة',
+        EDIT_TICKET: 'تعديل تذكرة',
+        TICKET_DELETE: 'حذف تذكرة',
+        CONFIRM_TICKET_DELETE: 'هل أنت متأكد من حذف التذكرة نهائياُ؟',
+        WAIT_TICKET_DELETE: 'يتم حذف التذكرة...',
+        DELETED_TICKET_MESSAGE: 'تم حذف التذكرة.',
+        CREATE_NEW_TICKET: 'إنشاء تذكرة جديدة',
+        NEW_TICKET: 'تذكرة جديدة',
+        SEARCH: 'بحث',
+        IN_ALL_FIELDS: 'في جميع الحقول',
+        FETCHED_SELECTED: 'تم إرجاع نتيجة البحث',
+        PLEASE_WAIT: 'برجاء الانتظار...',
+        NO_RECORDS: 'لا توجد سجلات',
+        EDIT: 'تعديل',
+        DELETE: 'حذف',
+        OK: 'موافق',
+        CANCEL: 'إلغاء'
+    }
+}

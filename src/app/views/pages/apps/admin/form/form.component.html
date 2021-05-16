@@ -1,0 +1,84 @@
+<kt-portlet>
+	<div class="fixedHeader">
+		<kt-portlet-header [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'">
+			<ng-container ktPortletTools>
+				<a [routerLink]="['/admin/']" class="btn btn-secondary kt-margin-r-10" mat-raised-button
+					matTooltip="{{'ADMIN.GENERAL.BACK_ADMIN_LIST' | translate}}">
+					<span class="kt-hidden-mobile">{{'ADMIN.GENERAL.BACK' | translate}}</span>
+					<i class="la la-arrow-left back"></i>
+				</a>
+				<a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit(false)"
+					mat-raised-button matTooltip="{{ 'ADMIN.GENERAL.SAVE_CONTINUE' | translate }}">
+					<span class="kt-hidden-mobile">{{ 'ADMIN.GENERAL.SAVE' | translate }}</span>
+				</a>
+			</ng-container>
+		</kt-portlet-header>
+		<kt-notice></kt-notice>
+	</div>
+	<kt-portlet-body>
+		<form [formGroup]="adminsForm" class="kt-form">
+
+			<kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000"
+				(close)="onAlertClose($event)">
+				{{ 'ADMIN.VALIDATION.SUBMIT_ERROR' | translate }}
+			</kt-alert>
+			<div class="kt-form__section kt-form__section--first">
+
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput placeholder="{{'ADMIN.INPUT.ENTER_FULL_NAME' | translate }}"
+								formControlName="fullname" />
+							<mat-error>{{'ADMIN.VALIDATION.FULL_NAME_IS' | translate }}
+								<strong>{{ 'ADMIN.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput placeholder="{{'ADMIN.INPUT.ENTER_EMAIL' | translate }}"
+								formControlName="email" />
+						</mat-form-field>
+					</div>
+				</div>
+
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput placeholder="{{'ADMIN.INPUT.ENTER_MOBILE' | translate }}"
+								formControlName="mobile" />
+						</mat-form-field>
+					</div>
+				</div>
+
+
+
+
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput type="password" placeholder="{{'ADMIN.INPUT.ENTER_PASSWORD' | translate }}"
+								formControlName="password" />
+						</mat-form-field>
+					</div>
+				</div>
+
+
+				<div class="form-group kt-form__group row">
+					<!-- <tk-upload [from]="adminsForm" [(value)]="uploadedPicture"></tk-upload> -->
+
+					<!-- <div class="col-lg-4 kt-margin-bottom-20-mobile">
+                                <input  type="file" id="file" (change)="onFileChange($event)"
+                                [disabled]="isFileUploading" />
+                                <mat-error *ngIf="uploading">{{'ADMIN.VALIDATION.IMAGE_IS_UPLOADING' | translate }}
+                                </mat-error>
+                            </div> -->
+
+				</div>
+			</div>
+		</form>
+	</kt-portlet-body>
+</kt-portlet>

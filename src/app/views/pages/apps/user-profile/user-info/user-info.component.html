@@ -1,0 +1,171 @@
+<kt-portlet>
+	<div class="fixedHeader">
+		<kt-portlet-header [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'" [viewLoading$]="loading$">
+			<ng-container ktPortletTools>
+				<a [routerLink]="['/']" class="btn btn-secondary kt-margin-r-10" mat-raised-button matTooltip="{{ 'USER_MANAGEMENT.GENERAL.BACK_TO_HOME' | translate }}">
+					<span class="kt-hidden-mobile">{{ 'USER_MANAGEMENT.GENERAL.BACK' | translate }}</span>
+					<i class="la la-arrow-left back"></i>
+				</a>
+				<a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSumbit(false)" mat-raised-button matTooltip="{{ 'USER_MANAGEMENT.GENERAL.SAVE_CONTINUE' | translate }}">
+					<span class="kt-hidden-mobile">{{ 'USER_MANAGEMENT.GENERAL.SAVE' | translate }}</span>
+				</a>
+			</ng-container>
+		</kt-portlet-header>
+		<kt-notice></kt-notice>
+	</div>
+	<kt-portlet-body>
+		<form [formGroup]="userForm" class="kt-form">
+			<kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000" (close)="onAlertClose($event)">
+				{{ 'USER_MANAGEMENT.VALIDATION.SUBMIT_ERROR' | translate }}
+			</kt-alert>
+			<div class="kt-form__section kt-form__section--first">
+				<mat-tab-group [(selectedIndex)]="selectedTab">
+					<mat-tab label="{{ 'AUTH.INPUT.USER_INFO' | translate }}">
+						<div class="form-group kt-form__group row">
+							<div class="col-lg-12 kt-margin-bottom-20-mobile text-center" *ngIf="!!user">
+								<img [attr.src]="user.avatar" onerror="this.src='./assets/media/users/profile.png';" style="width:100px">
+							</div>
+							<div class="col-lg-12 kt-margin-20-mobile text-center" *ngIf="!!user">
+								<input type="file" id="file" style="height: 0;overflow: hidden; width: 0;" (change)="onFileChange($event)" [disabled]="isFileUploading" />
+								<label for="file" class="btn btn-primary kt-margin-10" [ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': isFileUploading}"> {{'USER_MANAGEMENT.INPUT.UPDATE_AVATAR' | translate }} </label>
+							</div>
+						</div>
+						<div class="form-group kt-form__group row">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<input matInput placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_FIRST_NAME' | translate }}" formControlName="firstName" />
+									<mat-error>{{'USER_MANAGEMENT.VALIDATION.FIRST_NAME_IS' | translate }}
+										<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+						</div>
+						<div class="form-group kt-form__group row">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<input matInput placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_LAST_NAME' | translate }}" formControlName="lastName" />
+									<mat-error>{{'USER_MANAGEMENT.VALIDATION.LAST_NAME_IS' | translate }}
+										<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+						</div>
+						<div class="form-group kt-form__group row">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<input type="email" matInput placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_EMAIL' | translate }}" formControlName="email" />
+									<mat-error>{{'USER_MANAGEMENT.VALIDATION.EMAIL_IS' | translate }}
+										<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<button mat-button color="primary" (click)="openChangeEmailModal()"> {{'USER_MANAGEMENT.GENERAL.CHANGE_EMAIL'| translate}}</button>
+							</div>
+						</div>
+						<div class="form-group kt-form__group row">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<input matInput placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_MOBILE' | translate }}" formControlName="mobile" />
+									<mat-error>{{'USER_MANAGEMENT.VALIDATION.MOBILE_IS' | translate }}
+										<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<button mat-button color="primary" (click)="openChangeMobileModal()"> {{'USER_MANAGEMENT.GENERAL.CHANGE_MOBILE'| translate}}</button>
+							</div>
+						</div>
+						<div class="form-group kt-form__group row">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field floatLabel="always" [hideRequiredMarker]="false">
+									<mat-label>{{ 'USER_MANAGEMENT.VALIDATION.BIRTH_DATE_IS' | translate }}</mat-label>
+									<input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="{{ 'USER_MANAGEMENT.INPUT.BIRTH_DATE' | translate }}">
+									<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+									<mat-datepicker #picker></mat-datepicker>
+								</mat-form-field>
+							</div>
+						</div>
+
+					</mat-tab>
+					<mat-tab label="{{ 'AUTH.INPUT.SHOP_INFO' | translate }}" *ngIf="!!user&&user.type == 'owner'">
+						<mat-label class="headerStyle"></mat-label>
+						<div class="form-group kt-form__group row" *ngIf="!!user&&user.type == 'owner'">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<mat-label>{{ 'AUTH.INPUT.SHOP_NAME' | translate }}</mat-label>
+									<input matInput type="text" placeholder="{{ 'AUTH.INPUT.SHOP_NAME' | translate }}" formControlName="shopName" />
+									<mat-error>
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+						</div>
+						<div class="form-group kt-form__group row" *ngIf="!!user&&user.type == 'owner'">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<input matInput type="text" placeholder="{{ 'AUTH.INPUT.COMMERCIAL_NUMBER' | translate }}" formControlName="commercialNumber" />
+									<mat-error>
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+						</div>
+						<div class="form-group kt-form__group row" *ngIf="!!user&&user.type == 'owner'">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<input matInput type="text" placeholder="{{ 'AUTH.INPUT.TAX_NUMBER' | translate }}" formControlName="taxNumber" />
+									<mat-error>
+										<strong>{{ 'AUTH.VALIDATION.REQUIRED_FIELD' | translate }}</strong>
+									</mat-error>
+								</mat-form-field>
+							</div>
+
+						</div>
+						<div class="form-group kt-form__group row" *ngIf="!!user&&user.type == 'owner'">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<mat-label>{{ 'AUTH.INPUT.ADDRESS' | translate }}</mat-label>
+									<input matInput type="text" placeholder="{{ 'AUTH.INPUT.ADDRESS' | translate }}" formControlName="Address" />
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="form-group kt-form__group row" *ngIf="!!user&&user.type == 'owner'">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<mat-label>{{ 'AUTH.INPUT.COUNTRY' | translate }}</mat-label>
+									<mat-select formControlName="countryId" (selectionChange)="onSelect($event)">
+										<mat-option *ngFor="let country of countries" [value]="country.id">{{translate.store.currentLang === 'ar'? country.nameAr: country.nameEn}}</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="form-group kt-form__group row" *ngIf="!!user&&user.type == 'owner'">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<mat-label>{{ 'AUTH.INPUT.CITY' | translate }}</mat-label>
+									<mat-select formControlName="cityId">
+										<mat-option *ngFor="let city of cities" [value]="city.id">{{translate.store.currentLang === 'ar'? city.nameAr: city.nameEn}}</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div class="form-group kt-form__group row" *ngIf="!!user&&user.type == 'owner'">
+							<div class="col-lg-4 kt-margin-bottom-20-mobile">
+								<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+									<mat-label>{{ 'AUTH.INPUT.REGION' | translate }}</mat-label>
+									<input matInput type="text" placeholder="{{ 'AUTH.INPUT.REGION' | translate }}" formControlName="region" />
+								</mat-form-field>
+							</div>
+						</div>
+					</mat-tab>
+				</mat-tab-group>
+
+
+			</div>
+		</form>
+	</kt-portlet-body>
+	<kt-portlet>

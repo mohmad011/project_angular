@@ -1,0 +1,84 @@
+<kt-portlet>
+	<div class="fixedHeader">
+		<kt-portlet-header [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'">
+			<ng-container ktPortletTools>
+				<a [routerLink]="['/banking']" class="btn btn-secondary kt-margin-r-10" mat-raised-button matTooltip="{{'BANKING_SETTINGS.GENERAL.BACK_BANKING_SETTINGS_LIST' | translate}}">
+					<span class="kt-hidden-mobile">{{'BANKING_SETTINGS.GENERAL.BACK' | translate}}</span>
+					<i class="la la-arrow-left back"></i>
+				</a>
+				<a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit(false)" mat-raised-button matTooltip="{{ 'BANKING_SETTINGS.GENERAL.SAVE_CONTINUE' | translate }}">
+					<span class="kt-hidden-mobile">{{ 'BANKING_SETTINGS.GENERAL.SAVE' | translate }}</span>
+				</a>
+			</ng-container>
+		</kt-portlet-header>
+		<kt-notice></kt-notice>
+	</div>
+	<kt-portlet-body>
+		<form [formGroup]="bankingSettingsForm" class="kt-form" style="margin-top: 30px">
+			<kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000" (close)="onAlertClose($event)">
+				{{ 'BANKING_SETTINGS.VALIDATION.SUBMIT_ERROR' | translate }}
+			</kt-alert>
+			<div class="kt-form__section kt-form__section--first">
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput placeholder="{{'BANKING_SETTINGS.INPUT.ENTER_TITLE' | translate }}" formControlName="title" />
+							<mat-error>{{'BANKING_SETTINGS.VALIDATION.TITLE_IS' | translate }}
+								<strong>{{ 'BANKING_SETTINGS.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<!-- // -->
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput placeholder="{{'BANKING_SETTINGS.INPUT.ENTER_LIMIT' | translate }}" formControlName="limit" />
+							<mat-error>{{'BANKING_SETTINGS.VALIDATION.LIMIT_IS' | translate }}
+								<strong>{{ 'BANKING_SETTINGS.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<!-- // -->
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput placeholder="{{'BANKING_SETTINGS.INPUT.ENTER_AUTHORIZE_LOGIN_ID' | translate }}" formControlName="authorizeLoginID" />
+							<mat-error>{{'BANKING_SETTINGS.VALIDATION.AUTHORIZE_LOGIN_ID_IS' | translate }}
+								<strong>{{ 'BANKING_SETTINGS.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<!-- // -->
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput placeholder="{{'BANKING_SETTINGS.INPUT.ENTER_AUTHORIZE_KEY' | translate }}" formControlName="authorizeKey" />
+							<mat-error>{{'BANKING_SETTINGS.VALIDATION.AUTHORIZE_KEY_IS' | translate }}
+								<strong>{{ 'BANKING_SETTINGS.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<!-- BLOCKED PINS -->
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottoms-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<mat-label>{{'BANKING_SETTINGS.INPUT.ENTER_BLOCKED_PINS' | translate }}</mat-label>
+							<mat-chip-list #chipList aria-label="Options">
+								<mat-chip *ngFor="let bp of blockedPINS" [removable]="removable" (removed)="remove(bp)" [selectable]="selectable">
+									{{bp}}
+									<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+								</mat-chip>
+								<input placeholder="{{'BANKING_SETTINGS.INPUT.NEW_PIN' |
+									translate }}" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)" [matChipInputAddOnBlur]="addOnBlur" />
+							</mat-chip-list>
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+		</form>
+	</kt-portlet-body>
+</kt-portlet>

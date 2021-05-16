@@ -1,0 +1,359 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+@import "~highlight.js/styles/googlecode.css";
+@import "./kanban.css";
+@import "./comment.css";
+
+// header base skins
+.kt-header-base-light {
+	@import "sass/global/layout/header/skins/base/light.scss";
+}
+
+.kt-header-base-dark {
+	@import "sass/global/layout/header/skins/base/dark.scss";
+}
+
+// header menu skins
+.kt-header-menu-light {
+	@import "sass/global/layout/header/skins/menu/light.scss";
+}
+
+.kt-header-menu-dark {
+	@import "sass/global/layout/header/skins/menu/dark.scss";
+}
+
+// brand skins
+.kt-brand-dark {
+	@import "sass/global/layout/brand/skins/dark.scss";
+}
+
+.kt-brand-light {
+	@import "sass/global/layout/brand/skins/light.scss";
+}
+
+// aside skins
+.kt-aside-dark {
+	@import "sass/global/layout/aside/skins/dark.scss";
+}
+
+.kt-aside-light {
+	@import "sass/global/layout/aside/skins/light.scss";
+}
+
+// hide bootstrap dropdown arrow globally
+.dropdown-toggle::after {
+	display: none !important;
+}
+
+.mat-table__wrapper--dashboard .mat-table {
+	min-width: 600px !important;
+	width: 100% !important;
+}
+
+.position-static {
+	position: static;
+}
+
+.fixedHeader {
+	position: sticky;
+	top: 62px;
+	z-index: 94;
+	background-color: #fff;
+}
+
+.back {
+	padding-right: 0.5rem !important;
+	padding-left: 0 !important;
+}
+
+.error {
+	color: #fd397a;
+	text-align: right;
+	font-size: 11px;
+	font-weight: 400;
+	line-height: 1.125;
+	font-family: Roboto, Helvetica Neue, sans-serif;
+}
+
+.success {
+	color: green;
+	text-align: right;
+	font-size: 11px;
+	font-weight: 400;
+	line-height: 1.125;
+	font-family: Roboto, Helvetica Neue, sans-serif;
+}
+
+.homePageBtn {
+	margin: 20px;
+
+	a {
+		margin: 10px;
+	}
+}
+
+.headerStyle {
+	font-size: 1.2rem;
+	font-weight: bold;
+	font-family: Roboto, Helvetica Neue, sans-serif;
+	margin: 10px;
+}
+
+.complaintHeader {
+	text-align: initial;
+	font-size: 1.1rem;
+	font-weight: bold;
+	font-family: Roboto, Helvetica Neue, sans-serif;
+}
+
+.complaintView {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.textStyle {
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: Roboto, Helvetica Neue, sans-serif;
+}
+
+.titleStyle {
+	font-size: 1.3rem;
+	font-weight: bold;
+	font-family: Roboto, Helvetica Neue, sans-serif;
+	margin-bottom: 20px;
+}
+
+.signOutBtn {
+	padding: 1.6rem 1.5rem;
+	text-align: left;
+}
+
+.viewData {
+	font-weight: 600;
+	margin-top: 5px;
+}
+
+.headerData {
+	display: flex;
+	flex-direction: row;
+}
+
+.close.mat-button {
+	position: absolute;
+	top: 0;
+	right: left;
+	padding: 5px;
+	line-height: 14px;
+	min-width: auto;
+}
+
+.commentHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 10px 10px 0px 10px;
+}
+
+.card {
+	margin-bottom: 10px;
+}
+
+.mat-tab-label {
+	text-align: right !important;
+}
+
+.mat-tab-labels {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.closeModal {
+	margin-top: 20px !important;
+	padding: 5px 8px !important;
+	background-color: #ebedf2 !important;
+	border-radius: 20px !important;
+	color: #000 !important;
+}
+
+.userAvatar {
+	margin: 10px;
+	width: 40px;
+}
+
+.status {
+	padding: 4px 10px;
+	color: #fff !important;
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.dropDown {
+	text-align: center !important;
+}
+
+.kt-timeline-v2:before {
+	right: 0rem !important;
+}
+
+.kt-timeline-v2.list:before {
+	left: -1rem !important;
+	right: auto !important;
+}
+
+.kt-timeline-v2__item-time {
+	display: table-cell;
+	font-weight: 500;
+	vertical-align: top;
+	position: absolute;
+	color: #74788d;
+	font-size: 0.9rem;
+	width: max-content;
+	margin-left: 20px;
+	margin-top: -10px;
+}
+
+.kt-timeline-v2__item {
+	align-items: center !important;
+	justify-content: flex-end !important;
+	display: flex !important;
+}
+
+.kt-timeline-v2
+	.kt-timeline-v2__items
+	.kt-timeline-v2__item
+	.kt-timeline-v2__item-cricle {
+	left: 0.8rem;
+}
+
+.amountText {
+	float: right;
+	color: #000;
+	padding: 0 5px;
+}
+
+.kt-timeline-v2
+	.kt-timeline-v2__items
+	.kt-timeline-v2__item
+	.kt-timeline-v2__item-text {
+	padding: 0.35rem 0rem 0 0rem !important;
+}
+
+.circle {
+	right: auto !important;
+	left: 1.8rem !important;
+}
+
+.payment {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.actions {
+	margin: 0px 10px;
+	border-top: 1px solid #ebedf2;
+}
+
+// dashboard
+
+.kt-widget24 {
+	padding: 25px;
+}
+
+.kt-widget24__details {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.kt-widget24 .kt-widget24__details .kt-widget24__stats {
+	font-size: 1.75rem;
+	font-weight: 500;
+	padding-right: 0.5rem;
+}
+
+.kt-widget24__action {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.kt-widget24 .kt-widget24__details .kt-widget24__info .kt-widget24__desc {
+	color: #74788d;
+	font-weight: 400;
+}
+
+.kt-widget24 .kt-widget24__details .kt-widget24__info .kt-widget24__title {
+	display: flex;
+	font-size: 1.1rem;
+	font-weight: 500;
+	color: #595d6e;
+}
+
+.kt-widget24
+	.kt-widget24__details
+	.kt-widget24__info
+	.kt-widget24__title:hover {
+	-webkit-transition: color 0.3s ease;
+	transition: color 0.3s ease;
+	color: #22b9ff;
+	cursor: pointer;
+}
+
+.kt-widget24 .progress {
+	height: 0.5rem;
+	margin: 2rem 0 0.5rem 0;
+	background-color: #ebedf2;
+}
+
+.kt-badge.kt-badge--inline {
+	color: #fff !important;
+}
+
+.total {
+	color: #22b9ff !important;
+}
+
+.btn-label-brand {
+	color: #22b9ff !important;
+}
+
+.btn-label-brand:hover {
+	background-color: #22b9ff !important;
+	color: #fff !important;
+}
+
+.nav-link {
+	cursor: pointer !important;
+}
+
+.headerSub {
+	padding: 5px !important;
+	height: 30px !important;
+	position: absolute !important;
+	top: 0 !important;
+	margin-bottom: 50px !important;
+}
+
+h5 {
+	display: inline-block;
+	padding-right: 10px;
+}
+
+mat-card {
+	margin: 10px auto;
+}
+
+textarea {
+	background-color: ghostwhite !important;
+}
+
+@media only screen and (max-width: 991px) {
+	.fixedHeader {
+		top: 15px;
+	}
+}

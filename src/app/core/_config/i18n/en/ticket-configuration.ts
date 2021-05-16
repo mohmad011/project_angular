@@ -1,0 +1,61 @@
+export default {
+            GENERAL: {
+                BACK: 'Back',
+                SAVE: 'Save',
+                SAVE_CONTINUE: 'Save & Continue',
+                BACK_TICKETINGS_LIST: 'Back to the Ticketing list',
+                BACK_TO_HOME: 'Back to home'
+            },
+            VALIDATION: {
+                SUBMIT_ERROR: 'Oh snap! Change a few things up and try submitting again.',
+                EVENT_ID: 'Event id',
+                VALID_REQUIRED: 'required',
+                PRICE_IS: 'Price is',
+            },
+            INPUT: {
+                ENTER_EVENT_ID: 'Enter Event ID',
+                ENTER_PRICE: 'Enter Price',
+                ENTER_CURRENCY: 'Enter Currency',
+                ENTER_TYPE: 'Enter Type',
+                ENTER_COUNT: 'Enter Count',
+                ENTER_DESCRIPTION: 'Enter Description',
+                ENTER_EXPIRED_DATE: 'Enter Expired Date',
+                ENTER_QUANTITY: 'Enter Quantity',
+                ENTER_STATUS: 'Enter Status',
+                ACTIVE:'Active',
+                NOT_STARTED: 'Not started',
+                SOLD_OUT: 'Sold out',
+                ENDED: 'Ended'
+            
+            },
+            LIST: {
+                TICKETING: 'Ticketing',
+                TICKETINGS: 'Ticketing',
+                PRICE: 'Price',
+                EVENT_ID: 'Event id',
+                TYPE: 'Type',
+                QUANTITY: 'Quantity',
+                ACTIONS: 'Actions',
+                TICKETING_SAVED: 'Ticketing has been saved  successfully.',
+                NEW_TICKETING_SAVED: 'New Ticketing has been added successfully.',
+                TICKETINGS_LIST: 'Ticketing List',
+                CREATE_TICKETING: 'Create Ticketing',
+                EDIT_TICKETING: 'Edit Ticketing',
+                TICKETING_DELETE: 'Delete Ticketing',
+                CONFIRM_TICKETING_DELETE: 'Are you sure you want to permanently delete this Ticketing?',
+                WAIT_TICKETING_DELETE: 'Ticketing is deleting...',
+                DELETED_TICKETING_MESSAGE: 'Ticketing has been deleted.',
+                CREATE_NEW_TICKETING: 'Create New Ticketing',
+                NEW_TICKETING: 'New Ticketing',
+                SEARCH: 'Search',
+                IN_ALL_FIELDS: 'in all fields',
+                FETCHED_SELECTED: 'Fetch Selected',
+                FETCHED_SELECTED_TICKETING: 'Fetch selected Ticketing',
+                PLEASE_WAIT: 'Please wait....',
+                NO_RECORDS: 'No records found',
+                EDIT: 'Edit',
+                DELETE: 'Delete',
+                OK: 'OK',
+                CANCEL: 'Cancel'
+            }
+        }

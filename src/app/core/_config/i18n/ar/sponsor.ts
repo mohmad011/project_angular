@@ -1,0 +1,57 @@
+export default  {
+    GENERAL: {
+        BACK: 'الرجوع',
+        SAVE: 'حفظ',
+        SAVE_CONTINUE: 'حفظ و استمرار',
+        BACK_SPONSORS_LIST: 'الرجوع إلى قائمة الرعاة',
+        BACK_TO_HOME: 'الرجوع إلى الصفحة الرئيسية',
+		OK: "موافق",
+		CANCEL: "إلغاء",
+    },
+    VALIDATION: {
+        SUBMIT_ERROR: 'لقد حدث  خطأ! برجاء تغيير بعض الحقول ثم حاول الحفظ مرة أخرى.',
+        SPONSOR_NAME_IS: 'العنوان ',
+		SPONSOR_IMAGE_IS: 'صورة الراعي ',
+        VALID_REQUIRED: 'مطلوب',
+		CATEGORY_NAME_IS: 'اسم الفئة'
+    },
+    INPUT: {
+        ENTER_EVENT_ID: 'ادخل رقم الحدث  ',
+        ENTER_SPONSOR_NAME: 'ادخل الاسم ',
+        ENTER_SPONSOR_URL: 'ادخل الرابط ',
+        ENTER_SPONSOR_DESCRIPTION: 'ادخل الوصف',
+        ENTER_SPONSOR_CATEGORY:'ادخل الفئة',
+		ENTER_CATEGORY_NAME: 'ادخل اسم الفئة'
+    },
+    LIST: {
+        SPONSOR: 'راعي ',
+        SPONSORS: 'رعاة',
+        NAME: 'العنوان',
+        SPONSOR_NAME: 'الاسم',
+        SPONSOR_CATEGORY: 'الفئة',
+        SPONSOR_DESCRIPTION: 'الوصف',
+        SPONSOR_SAVED: 'تم حفظ الراعي  بنجاح.',
+        NEW_SPONSOR_SAVED: 'تم إضافة راعي  جديدة بنجاح.',
+        SPONSORS_LIST: 'قائمة الرعاة ',
+        CREATE_SPONSOR: 'إنشاء راعي ',
+        EDIT_SPONSOR: 'تعديل الراعي ',
+		ADD_CATEGORY: 'إضافة فئة',
+		CATEGORY: 'فئة',
+        SPONSOR_DELETE: 'حذف الراعي  ',
+        CONFIRM_SPONSOR_DELETE: 'هل أنت متأكد من حذف  الراعي  نهائياُ؟',
+        WAIT_SPONSOR_DELETE: 'يتم حذف الراعي  ...',
+        DELETED_SPONSOR_MESSAGE: 'تم حذف الراعي  .',
+        CREATE_NEW_SPONSOR: 'إنشاء الراعي   جديد',
+        NEW_SPONSOR: ' راعي  جديد',
+        SEARCH: 'بحث',
+        IN_ALL_FIELDS: 'في جميع الحقول',
+        FETCHED_SELECTED: 'تم إرجاع نتيجة البحث',
+        PLEASE_WAIT: 'برجاء الانتظار...',
+        NO_RECORDS: 'لا توجد سجلات',
+        ACTIONS: 'التحكم',
+        EDIT: 'تعديل',
+        DELETE: 'حذف',
+        OK: 'موافق',
+        CANCEL: 'إلغاء'
+    }
+}

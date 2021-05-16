@@ -1,0 +1,51 @@
+export default {
+    GENERAL: {
+        BACK: 'Back',
+        SAVE: 'Save',
+        SAVE_CONTINUE: 'Save & Continue',
+        BACK_TOURISM_REQUESTS_LIST: 'Back to the Tourism Requests list',
+        BACK_TO_HOME: 'Back to home'
+    },
+    VALIDATION: {
+        SUBMIT_ERROR: 'Oh snap! Change a few things up and try submitting again.',
+        EVENT_ID: 'Event id',
+        VALID_REQUIRED: 'required',
+        TOURISM_REQUEST_IS: 'Tourism is',
+    },
+    INPUT: {
+        ENTER_TOURISM: 'Enter Tourism',
+        ENTER_MESSAGE: 'Enter Message',
+        ENTER_STATUS: 'Select Status',
+        ACCEPTED: 'Accepted',
+        REJECTED: 'Rejected',
+        DRAFT: 'Draft',
+    },
+    LIST: {
+        TOURISM_REQUEST: 'Tourism Request',
+        TOURISM_REQUESTS: 'Tourism Requests',
+        TOURISM: 'Tourism',
+        STATUS: 'Status',
+        ACTIONS: 'Actions',
+        TOURISM_REQUEST_SAVED: 'Tourism Request has been saved  successfully.',
+        NEW_TOURISM_REQUEST_SAVED: 'New Tourism Request has been added successfully.',
+        TOURISM_REQUESTS_LIST: 'Tourism Requests List',
+        CREATE_TOURISM_REQUEST: 'Create Tourism Request',
+        EDIT_TOURISM_REQUEST: 'Edit Tourism Request',
+        TOURISM_REQUEST_DELETE: 'Delete Tourism Request',
+        CONFIRM_TOURISM_REQUEST_DELETE: 'Are you sure you want to permanently delete this Tourism Request?',
+        WAIT_TOURISM_REQUEST_DELETE: 'Tourism Request is deleting...',
+        DELETED_TOURISM_REQUEST_MESSAGE: 'Tourism Request has been deleted.',
+        CREATE_NEW_TOURISM_REQUEST: 'Create New Tourism Request',
+        NEW_TOURISM_REQUEST: 'New Tourism Request',
+        SEARCH: 'Search',
+        IN_ALL_FIELDS: 'in all fields',
+        FETCHED_SELECTED: 'Fetch Selected',
+        FETCHED_SELECTED_TOURISM_REQUEST: 'Fetch selected Tourism Request',
+        PLEASE_WAIT: 'Please wait....',
+        NO_RECORDS: 'No records found',
+        EDIT: 'Edit',
+        DELETE: 'Delete',
+        OK: 'OK',
+        CANCEL: 'Cancel'
+    }
+}

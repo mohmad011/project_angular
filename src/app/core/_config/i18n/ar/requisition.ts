@@ -1,0 +1,42 @@
+export default  {
+    LIST: {
+        REQUISITIONS: 'التوريدات',
+        NEW_REQUISITION: 'طلب توريد جديد',
+        REQUISITIONS_LIST: 'قائمة التوريدات',
+        REQUISITION_NUMBER: ' رقم طلب التوريد',
+        REQUISITION_DATE: 'تاريخ طلب التوريد',
+        NOTE: 'ملاحظات أخرى',
+        REQUISITION_DELETE: 'مسح طلب التوريد',
+        CONFIRM_REQUISITION_DELETE: '؟هل أنت متأكد انك تريد مسح هذا التوريد',
+        WAIT_REQUISITION_DELETE: 'يتم مسح طلب التوريد...',
+        DELETED_REQUISITION_MESSAGE: 'تم مسح طلب التوريد.',
+        DELETE_PRODUCT: 'مسح المنتج',
+        CONFIRM_PRODUCT_DELETE: 'هل أنت متأكد انك تريد مسح هذا المنتج؟',
+        WAIT_PRODUCT_DELETE: 'يتم مسح المنتج...',
+        DELETED_PRODUCT_MESSAGE: 'تم مسح المنتج.',
+        EDIT_REQUISITION: 'تعديل طلب التوريد',
+        REQUISITION_SAVED: 'تم حفظ طلب التوريد',
+        NEW_REQUISITION_SAVED: 'تم اضافة طلب توريد جديد بنجاح',
+        CREATE_REQUISITION: 'انشاء طلب توريد',
+        CUSTOMER_NAME: 'اسم العميل',
+        BACK_TO_REQUISITION_LIST: 'الرجوع الى قائمة التوريدات'
+    },
+    INPUT: {
+        REQUISITION_DATE: 'تاريخ طلب التوريد',
+        REQUISITION_NUMBER: 'رقم طلب التوريد',
+        AMOUNT: 'الكمية',
+        DISCOUNT: 'الخصم',
+        PRODUCT_CATEGORY: 'فئة المنتج',
+        PRODUCT: 'المنتج',
+        ADD_PRODUCT: 'اضافة منتج',
+        PRODUCTS: 'المنتجات',
+        FINANCIAL_TOTAL: 'اجمالى الحساب',
+        TOTAL_AFTER_DISCOUNT: 'الاجمالى بعد الخصم',
+        TAX: 'الضريبة',
+        FINANCIALS: 'الحسابات',
+        ADD_PRODUCT_ERROR: 'يجب ادخال المنتج اولا',
+        REQUISITION_NUMBER_VALID: 'رقم طلب التوريد',
+        REQUISITION_INFO: 'بيانات طلب التوريد',
+        ADD_NEW_PRODUCT: 'اضافة منتج جديد'
+    }
+}

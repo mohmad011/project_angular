@@ -1,0 +1,2 @@
+<select2 *ngIf="loading$|async" (search)="search($event)" (update)="onUpdate($event)" [value]="currSelections" [placeholder]="placeHolder" [data]="data" [customSearchEnabled]="true" [multiple]="optionsSource.multiple" [material]="true">
+</select2>

@@ -1,0 +1,51 @@
+export default  {
+    GENERAL: {
+        BACK: 'Back',
+        SAVE: 'Save',
+        SAVE_CONTINUE: 'Save & Continue',
+        BACK_ORGANIZER_LIST: 'Back to the organizers list',
+        BACK_TO_HOME: 'Back to home'
+    },
+    VALIDATION: {
+        SUBMIT_ERROR: 'Oh snap! Change a few things up and try submitting again.',
+        NAME_IS: 'Name is',
+		LINK_IS: 'Please Enter Link ot Upload file',
+		AVATAR_IS: 'Avatar is',
+		VALID_REQUIRED: 'required',
+        VALID_INCORRECT: 'incorrect',
+    },
+    INPUT: {
+		ENTER_NAME: 'Enter Name',
+		ENTER_LINK: 'Enter Link',
+		SELECT_AVATAR: 'Select Avatar',
+    },
+    LIST: {
+        ORGANIZER: 'Organizer',
+		ORGANIZERS: 'Organizers',
+        NAME: 'Name',
+        LINK: 'Link',
+		AVATAR: 'Avatar',
+		ORGANIZER_SAVED: 'Organizer has been saved  successfully.',
+        NEW_ORGANIZER_SAVED: 'Organizer has been added successfully.',
+		ORGANIZERS_LIST: 'Organizers list ',
+        CREATE_ORGANIZER: 'Create Organizer',
+        EDIT_ORGANIZER: 'Edit Organizer',
+		ORGANIZER_DELETE: 'Delete Organizer ',
+        CONFIRM_ORGANIZER_DELETE: 'Are you sure you want to permanently delete this Organizer?',
+        WAIT_ORGANIZER_DELETE: 'Organizer is deleting...',
+        DELETED_ORGANIZER_MESSAGE: 'Organizer has been deleted.',
+        CREATE_NEW_ORGANIZER: 'Create New Organizer',
+        NEW_ORGANIZER: 'New Organizer',
+        SEARCH: 'Search',
+        IN_ALL_FIELDS: 'in all fields',
+        FETCHED_SELECTED: 'Fetch Selected',
+        FETCHED_SELECTED_ORGANIZER: 'Fetch selected Organizers',
+        PLEASE_WAIT: 'Please wait....',
+        NO_RECORDS: 'No records found',
+        ACTIONS: 'Actions',
+        EDIT: 'Edit',
+        DELETE: 'Delete',
+        OK: 'OK',
+        CANCEL: 'Cancel'
+    }
+}

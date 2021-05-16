@@ -1,0 +1,82 @@
+<kt-portlet>
+	<kt-portlet-header [title]="messages['USER_MANAGEMENT.LIST.USERS_LIST']" [class]="'kt-portlet__head--lg'" [viewLoading$]="dataSource.loading$">
+		<ng-container ktPortletTools>
+			<button class="kt-margin-r-10" [routerLink]="['./new']" mat-raised-button color="primary" matTooltip="{{ 'USER_MANAGEMENT.LIST.CREATE_NEW_USER' | translate }}">
+				{{ 'USER_MANAGEMENT.LIST.NEW_USER' | translate }}
+			</button>
+		</ng-container>
+	</kt-portlet-header>
+	<kt-portlet-body>
+		<div class="kt-form kt-margin-b-30">
+			<div class="kt-form__filtration">
+				<div class="row align-items-center">
+					<div class="col-md-2 kt-margin-bottom-10-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput #searchInput placeholder="{{ 'USER_MANAGEMENT.LIST.SEARCH' | translate }}">
+							<mat-hint align="start">
+								<strong>{{ 'USER_MANAGEMENT.LIST.SEARCH' | translate }}</strong> {{ 'USER_MANAGEMENT.LIST.IN_ALL_FIELDS' | translate }}
+							</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mat-table__wrapper">
+			<mat-table class="lmat-elevation-z8" #table [dataSource]="dataSource" matSort #sort1="matSort" matSortActive="id" matSortDirection="asc" matSortDisableClear>
+<!--				<ng-container matColumnDef="select">-->
+<!--					<mat-header-cell *matHeaderCellDef class="mat-column-checkbox">-->
+<!--						<mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">-->
+<!--						</mat-checkbox>-->
+<!--					</mat-header-cell>-->
+<!--					<mat-cell *matCellDef="let row" class="mat-column-checkbox">-->
+<!--						<mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">-->
+<!--						</mat-checkbox>-->
+<!--					</mat-cell>-->
+<!--				</ng-container>-->
+				<ng-container matColumnDef="name">
+					<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'USER_MANAGEMENT.LIST.NAME' | translate }}</mat-header-cell>
+					<mat-cell *matCellDef="let user">{{user.name}}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="email">
+					<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'USER_MANAGEMENT.LIST.EMAIL' | translate }}</mat-header-cell>
+					<mat-cell *matCellDef="let user">
+						{{user.email}}
+					</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="role">
+					<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'USER_MANAGEMENT.LIST.ROLE' | translate }}</mat-header-cell>
+					<mat-cell *matCellDef="let user">{{user.role}}</mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="actions">
+					<mat-header-cell *matHeaderCellDef>{{ 'USER_MANAGEMENT.LIST.ACTIONS' | translate }}</mat-header-cell>
+					<mat-cell *matCellDef="let user">
+						<button (click)="editRow(user.id)" mat-icon-button color="primary" matTooltip="{{'SETTINGS.LIST.EDIT'|translate}}">
+							<mat-icon>create</mat-icon>
+						</button>&nbsp;
+						<button mat-icon-button color="warn" matTooltip="{{'SETTINGS.LIST.DELETE'|translate}}" type="button" (click)="removeRow(user)">
+							<mat-icon>delete</mat-icon>
+						</button>
+<!--						<button *ngIf="user && user.user && !user.user.blocked" mat-icon-button color="warn" matTooltip="{{'USER_MANAGEMENT.LIST.BLOCK'|translate}}" type="button" (click)="blockUser(user)">-->
+<!--							<mat-icon>block</mat-icon>-->
+<!--						</button>-->
+<!--						<button *ngIf="user && user.user && user.user.blocked" mat-icon-button color="primary" matTooltip="{{'USER_MANAGEMENT.LIST.UN_BLOCK'|translate}}" type="button" (click)="unBlockUser(user)">-->
+<!--							<mat-icon>rotate_left</mat-icon>-->
+<!--						</button>-->
+					</mat-cell>
+				</ng-container>
+
+				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+				<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+			</mat-table>
+			<div class="mat-table__message" *ngIf="!dataSource.hasItems">{{ 'USER_MANAGEMENT.LIST.NO_RECORDS' | translate }}</div><!-- Message for empty data  -->
+			<div class="mat-table__message" *ngIf="dataSource.isPreloadTextViewed$ | async">{{ 'USER_MANAGEMENT.LIST.PLEASE_WAIT' | translate }}</div>
+		</div>
+
+		<div class="mat-table__bottom">
+			<mat-spinner [diameter]="20" *ngIf="dataSource.loading$ | async"></mat-spinner>
+			<mat-paginator [pageSize]="10" [pageSizeOptions]="[3, 5, 10]" [length]="dataSource.paginatorTotal$ | async" [showFirstLastButtons]="true"></mat-paginator>
+		</div>
+	</kt-portlet-body>
+</kt-portlet>

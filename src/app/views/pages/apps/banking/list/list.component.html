@@ -1,0 +1,76 @@
+<kt-portlet>
+	<kt-portlet-header title="{{'BANKING_SETTINGS.LIST.BANKING_SETTINGS_LIST' | translate}}" [class]="'kt-portlet__head--lg'" [viewLoading$]="dataSource.loading$">
+		<ng-container ktPortletTools>
+
+		</ng-container>&nbsp;&nbsp;&nbsp;
+		<ng-container ktPortletTools>
+			<button [routerLink]="['./new']" mat-raised-button color="primary" matTooltip="New Banking Settings">
+				{{'BANKING_SETTINGS.LIST.CREATE_NEW_BANKING_SETTING'| translate}}
+			</button>
+		</ng-container>
+	</kt-portlet-header>
+
+	<kt-portlet-body>
+		<div class="kt-form kt-margin-b-30">
+			<div class="kt-form__filtration">
+				<div class="row align-items-center">
+					<div class="col-md-2 kt-margin-bottom-10-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always" [hideRequiredMarker]="false">
+							<input matInput #searchInput placeholder="{{ 'BANKING_SETTINGS.LIST.SEARCH' | translate }}">
+							<mat-hint align="start">
+								<strong>{{ 'BANKING_SETTINGS.LIST.SEARCH' | translate }}</strong>
+								{{ 'BANKING_SETTINGS.LIST.IN_ALL_FIELDS' | translate }}
+							</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mat-table__wrapper">
+			<mat-table class="lmat-elevation-z8" #table [dataSource]="dataSource" matSort #sort1="matSort" matSortActive="id" matSortDirection="asc" matSortDisableClear>
+
+				<ng-container matColumnDef="title">
+					<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'BANKING_SETTINGS.LIST.TITLE' | translate }}
+					</mat-header-cell>
+					<mat-cell *matCellDef="let bankingSettings">{{bankingSettings.title}}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="limit">
+					<mat-header-cell *matHeaderCellDef mat-sort-header>
+						{{ 'BANKING_SETTINGS.LIST.LIMIT' | translate }}</mat-header-cell>
+					<mat-cell *matCellDef="let bankingSettings">{{bankingSettings.limit}}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="remainder">
+					<mat-header-cell *matHeaderCellDef mat-sort-header>
+						{{ 'BANKING_SETTINGS.LIST.REMAINDER' | translate }}</mat-header-cell>
+					<mat-cell *matCellDef="let bankingSettings">{{bankingSettings.remainder}}</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="actions">
+					<mat-header-cell *matHeaderCellDef>{{ 'BANKING_SETTINGS.LIST.ACTIONS' | translate }}
+					</mat-header-cell>
+					<mat-cell *matCellDef="let bankingSettings">
+						<button (click)="editRow(bankingSettings.id)" mat-icon-button color="primary" matTooltip="{{'BANKING_SETTINGS.LIST.EDIT'|translate}}">
+							<mat-icon>create</mat-icon>
+						</button>&nbsp;
+
+						<button mat-icon-button color="warn" matTooltip="{{'BANKING_SETTINGS.LIST.DELETE'|translate}}" type="button" (click)="removeRow(bankingSettings)">
+							<mat-icon>delete</mat-icon>
+						</button>
+					</mat-cell>
+				</ng-container>
+
+				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+				<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+			</mat-table>
+			<div class="mat-table__message" *ngIf="!dataSource.hasItems">
+				{{ 'BANKING_SETTINGS.LIST.NO_RECORDS' | translate }}</div><!-- Message for empty data  -->
+			<div class="mat-table__message" *ngIf="dataSource.isPreloadTextViewed$ | async">
+				{{ 'BANKING_SETTINGS.LIST.PLEASE_WAIT' | translate }}</div>
+		</div>
+
+		<div class="mat-table__bottom">
+			<mat-spinner [diameter]="20" *ngIf="dataSource.loading$ | async"></mat-spinner>
+			<mat-paginator [pageSize]="10" [pageSizeOptions]="[3, 5, 10]" [length]="dataSource.paginatorTotal$ | async" [showFirstLastButtons]="true"></mat-paginator>
+		</div>
+	</kt-portlet-body>
+</kt-portlet>

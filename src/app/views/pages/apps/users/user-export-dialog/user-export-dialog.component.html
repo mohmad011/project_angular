@@ -1,0 +1,24 @@
+	<h2 mat-dialog-title>
+		{{'USER_MANAGEMENT.LIST.EXPORT'|translate}}
+	</h2>
+	<mat-dialog-content>
+		<br>
+		<mat-card>
+			<form [formGroup]="userExportForm" class="kt-form">
+				<ng-container formArrayName="fields">
+					<div class="row">
+						<div class="col-6" *ngFor="let field of data.fields; let i = index">
+							<mat-checkbox class="example-margin" [formControlName]="i">
+								{{field.label}}
+							</mat-checkbox>
+						</div>
+					</div>
+				</ng-container>
+			</form>
+		</mat-card>
+		<br>
+	</mat-dialog-content>
+	<mat-dialog-actions align="end">
+		<button mat-button (click)="onNoClick()">{{'USER_MANAGEMENT.LIST.CANCEL'|translate}}</button>&nbsp;
+		<button mat-button (click)="onYesClick()" color="primary" cdkFocusInitial [disabled]="viewLoading">{{'USER_MANAGEMENT.LIST.OK'|translate}}</button>
+	</mat-dialog-actions>

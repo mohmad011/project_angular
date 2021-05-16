@@ -1,0 +1,229 @@
+<kt-portlet>
+	<div class="fixedHeader">
+		<kt-portlet-header [title]="getComponentTitle()" [class]="'kt-portlet__head--lg'">
+			<ng-container ktPortletTools>
+				<a [routerLink]="['/users']" class="btn btn-secondary kt-margin-r-10" mat-raised-button
+					matTooltip="{{ 'USER_MANAGEMENT.GENERAL.BACK_USERS_LIST' | translate }}">
+					<span class="kt-hidden-mobile">{{ 'USER_MANAGEMENT.GENERAL.BACK' | translate }}</span>
+					<i class="la la-arrow-left back"></i>
+				</a>
+				<a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit(false)"
+					mat-raised-button matTooltip="{{ 'USER_MANAGEMENT.GENERAL.SAVE_CONTINUE' | translate }}">
+					<span class="kt-hidden-mobile">{{ 'USER_MANAGEMENT.GENERAL.SAVE' | translate }}</span>
+				</a>
+			</ng-container>
+		</kt-portlet-header>
+		<kt-notice></kt-notice>
+	</div>
+	<kt-portlet-body>
+		<form [formGroup]="userForm" class="kt-form" style="margin-top: 30px">
+			<kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000"
+					  (close)="onAlertClose($event)">
+				{{ 'USER_MANAGEMENT.VALIDATION.SUBMIT_ERROR' | translate }}
+			</kt-alert>
+			<div class="kt-form__section kt-form__section--first">
+<!--					<div class="form-group kt-form__group row">-->
+<!--						<div class="col-lg-4 kt-margin-bottom-20-mobile">-->
+<!--							<mat-form-field required class="mat-form-field-fluid" floatLabel="always"-->
+<!--											[hideRequiredMarker]="false">-->
+<!--								<input matInput-->
+<!--									   placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_FIRST_NAME' | translate }}"-->
+<!--									   formControlName="firstName" />-->
+<!--								<mat-error>{{'USER_MANAGEMENT.VALIDATION.FIRST_NAME_IS' | translate }}-->
+<!--									<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>-->
+<!--								</mat-error>-->
+<!--							</mat-form-field>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="form-group kt-form__group row">-->
+<!--						<div class="col-lg-4 kt-margin-bottom-20-mobile">-->
+<!--							<mat-form-field class="mat-form-field-fluid" floatLabel="always"-->
+<!--											[hideRequiredMarker]="false">-->
+<!--								<input matInput-->
+<!--									   placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_MIDDLE_NAME' | translate }}"-->
+<!--									   formControlName="middleName" />-->
+<!--								<mat-error>{{'USER_MANAGEMENT.VALIDATION.MIDDLE_NAME_IS' | translate }}-->
+<!--									<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>-->
+<!--								</mat-error>-->
+<!--							</mat-form-field>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="form-group kt-form__group row">-->
+<!--						<div class="col-lg-4 kt-margin-bottom-20-mobile">-->
+<!--							<mat-form-field required class="mat-form-field-fluid" floatLabel="always"-->
+<!--											[hideRequiredMarker]="false">-->
+<!--								<input matInput-->
+<!--									   placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_LAST_NAME' | translate }}"-->
+<!--									   formControlName="lastName" />-->
+<!--								<mat-error>{{'USER_MANAGEMENT.VALIDATION.LAST_NAME_IS' | translate }}-->
+<!--									<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>-->
+<!--								</mat-error>-->
+<!--							</mat-form-field>-->
+<!--						</div>-->
+<!--					</div>-->
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field required class="mat-form-field-fluid" floatLabel="always"
+										[hideRequiredMarker]="false">
+							<input matInput
+								   placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_NAME' | translate }}"
+								   formControlName="name" />
+							<mat-error>{{'USER_MANAGEMENT.VALIDATION.NAME_IS' | translate }}
+								<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always"
+										[hideRequiredMarker]="false">
+							<input type="email" matInput
+								   placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_EMAIL' | translate }}"
+								   formControlName="email" />
+							<mat-error *ngIf="!userEmailExisted">
+								{{'USER_MANAGEMENT.VALIDATION.EMAIL_IS' | translate }}
+								<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+							</mat-error>
+							<mat-error *ngIf="userEmailExisted">
+								<strong>{{ 'AUTH.VALIDATION.EMAIL_EXISTED' | translate }}</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+					<div class="col-lg-4 kt-margin-bottom-20-mobile" *ngIf="user && user.id">
+						<button mat-button color="primary" (click)="openChangeEmailModal()">
+							{{'USER_MANAGEMENT.GENERAL.CHANGE_EMAIL'| translate}}</button>
+					</div>
+				</div>
+<!--					<div class="form-group kt-form__group row">-->
+<!--						<div class="col-lg-4 kt-margin-bottom-20-mobile">-->
+<!--							<mat-label>-->
+<!--								{{'USER_MANAGEMENT.INPUT.ENTER_MOBILE' | translate }}-->
+<!--							</mat-label>-->
+<!--							<int-phone-prefix [locale]="'en'" formControlName="mobile"></int-phone-prefix>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="form-group kt-form__group row">-->
+<!--						<div class="col-lg-4 kt-margin-bottom-20-mobile">-->
+<!--							<mat-form-field class="mat-form-field-fluid" floatLabel="always"-->
+<!--											[hideRequiredMarker]="false">-->
+<!--								<input matInput-->
+<!--									   placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_COMPANY' | translate }}"-->
+<!--									   formControlName="company" />-->
+<!--							</mat-form-field>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="form-group kt-form__group row">-->
+<!--						<div class="col-lg-4 kt-margin-bottom-20-mobile">-->
+<!--							<mat-form-field class="mat-form-field-fluid" floatLabel="always"-->
+<!--											[hideRequiredMarker]="false">-->
+<!--								<input matInput-->
+<!--									   placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_POSITION' | translate }}"-->
+<!--									   formControlName="position" />-->
+<!--							</mat-form-field>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="form-group kt-form__group row">-->
+<!--						<div class="col-lg-4 kt-margin-bottom-20-mobile">-->
+<!--							<mat-form-field class="mat-form-field-fluid" floatLabel="always"-->
+<!--											[hideRequiredMarker]="false">-->
+<!--								<input matInput-->
+<!--									   placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_ABOUT' | translate }}"-->
+<!--									   formControlName="about" />-->
+<!--							</mat-form-field>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="form-group kt-form__group row">-->
+<!--						<div class="col-lg-4 kt-margin-bottom-20-mobile">-->
+<!--							<mat-form-field class="mat-form-field-fluid" floatLabel="always"-->
+<!--											[hideRequiredMarker]="false">-->
+<!--								<mat-label>-->
+<!--									{{'USER_MANAGEMENT.INPUT.SELECT_GENDER' | translate }}-->
+<!--								</mat-label>-->
+<!--								<mat-select formControlName="gender">-->
+<!--									<mat-option value="male">Male</mat-option>-->
+<!--									<mat-option value="female">Female</mat-option>-->
+<!--								</mat-select>-->
+<!--							</mat-form-field>-->
+<!--						</div>-->
+<!--					</div>-->
+
+				<div class="form-group kt-form__group row">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always"
+										[hideRequiredMarker]="false">
+							<mat-label>
+								{{'USER_MANAGEMENT.INPUT.SELECT_ROLE' | translate }}
+							</mat-label>
+							<mat-select formControlName="role">
+								<mat-option value="admin">Admin</mat-option>
+								<mat-option value="user">User</mat-option>
+							</mat-select>
+							<mat-error>{{'USER_MANAGEMENT.VALIDATION.ROLE_IS' | translate }}
+								<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="form-group kt-form__group row" *ngIf="!user || !user.id">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile" *ngIf="!passwordGenerated && !!user">
+						<button (click)="generateClicked()" class="btn btn-primary"
+								style="background-color: #E9D4A7; border-color:#E9D4A7; color:#fff">
+							{{'USER_MANAGEMENT.INPUT.CHANGE_PASSWORD' | translate }}&ensp; <i
+							class="fa fa-lock"></i></button>
+					</div>
+					<div class="col-lg-4 kt-margin-bottom-20-mobile" *ngIf=" !user">
+						<mat-form-field class="mat-form-field-fluid" floatLabel="always"
+										[hideRequiredMarker]="false">
+							<input [type]="passwordDisplayed?'text':'password' " matInput
+								   [value]="!!user?user.password:null"
+								   placeholder="{{'USER_MANAGEMENT.INPUT.ENTER_PASSWORD' | translate }}"
+								   formControlName="password" />
+							<mat-error>{{'USER_MANAGEMENT.VALIDATION.PASSWORD_IS' | translate }}
+								<strong>{{ 'USER_MANAGEMENT.VALIDATION.VALID_REQUIRED' | translate }}</strong>
+							</mat-error>
+						</mat-form-field>
+					</div>
+
+					<div class="col-lg-2 kt-margin-bottom-20-mobile"
+						 *ngIf="(!!passwordGenerated && !!userForm.controls.password.value) || !user">
+						<mat-card-content>
+							<section class="example-section">
+								<mat-slide-toggle class="example-margin" [checked]="passwordDisplayed" (change)="showPassword()">
+									{{'USER_MANAGEMENT.INPUT.SHOW_PASSWORD' | translate }}
+								</mat-slide-toggle>
+							</section>
+						</mat-card-content>
+					</div>
+					<div class="col-lg-4 kt-margin-bottom-20-mobile" *ngIf="!!passwordGenerated || !user">
+						<a class="btn btn-accent" (click)="generatePassword()"
+						   style="background-color: #E9D4A7; border-color:#E9D4A7; color:#fff">{{'USER_MANAGEMENT.INPUT.GENERATE_PASSWORD' | translate }}</a>
+					</div>
+				</div>
+<!--					<div class="form-group kt-form__group row">-->
+<!--						<div class="col-lg-4 kt-margin-bottom-20-mobile">-->
+<!--							<mat-form-field floatLabel="always" [hideRequiredMarker]="false">-->
+<!--								<mat-label>{{ 'USER_MANAGEMENT.VALIDATION.BIRTH_DATE_IS' | translate }}-->
+<!--								</mat-label>-->
+<!--								<input matInput [matDatepicker]="picker" formControlName="dateOfBirth"-->
+<!--									   placeholder="{{ 'USER_MANAGEMENT.INPUT.BIRTH_DATE' | translate }}">-->
+<!--								<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--								<mat-datepicker #picker></mat-datepicker>-->
+<!--							</mat-form-field>-->
+<!--						</div>-->
+<!--					</div>-->
+				<!-- <div class="form-group kt-form__group row" *ngIf="!!this.user && this.user.id">
+					<div class="col-lg-4 kt-margin-bottom-20-mobile">
+						<mat-card-content>
+							<section class="example-section">
+								{{'AUTH.INPUT.BLOCKED' | translate }}
+								<mat-slide-toggle class="example-margin" style="margin:0 2rem ;" [color]="primary" formControlName="blocked">
+								</mat-slide-toggle>
+							</section>
+						</mat-card-content>
+					</div>
+				</div> -->
+			</div>
+		</form>
+	</kt-portlet-body>
+</kt-portlet>
